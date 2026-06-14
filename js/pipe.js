@@ -21,7 +21,8 @@ class Pipe {
 
     draw(ctx) {
 
-        ctx.fillStyle = "green";
+        // ท่อบน
+        ctx.fillStyle = "#2ecc71";
 
         ctx.fillRect(
             this.x,
@@ -30,11 +31,34 @@ class Pipe {
             this.topHeight
         );
 
+        // หัวท่อบน
+        ctx.fillStyle = "#27ae60";
+
+        ctx.fillRect(
+            this.x - 5,
+            this.topHeight - 20,
+            this.width + 10,
+            20
+        );
+
+        // ท่อล่าง
+        ctx.fillStyle = "#2ecc71";
+
         ctx.fillRect(
             this.x,
             this.topHeight + this.gap,
             this.width,
             600
+        );
+
+        // หัวท่อล่าง
+        ctx.fillStyle = "#27ae60";
+
+        ctx.fillRect(
+            this.x - 5,
+            this.topHeight + this.gap,
+            this.width + 10,
+            20
         );
     }
 }

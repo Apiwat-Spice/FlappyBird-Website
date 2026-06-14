@@ -8,9 +8,13 @@ class Bird {
         this.width = 40;
         this.height = 40;
 
+        this.image = new Image();
+        this.image.src = "assets/bird.png";
+
         this.velocity = 0;
         this.gravity = 0.5;
-        this.jumpForce = -8;
+
+        this.jumpForce = -8; // เพิ่มบรรทัดนี้
     }
 
     jump() {
@@ -23,9 +27,9 @@ class Bird {
     }
 
     draw(ctx) {
-        ctx.fillStyle = "yellow";
 
-        ctx.fillRect(
+        ctx.drawImage(
+            this.image,
             this.x,
             this.y,
             this.width,

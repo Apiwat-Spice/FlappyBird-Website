@@ -1,5 +1,11 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+const jumpSound =
+    new Audio("sounds/jump.wav");
+const hitSound =
+    new Audio("sounds/hit.wav");
+const background = new Image();
+background.src = "assets/background.png";
 
 canvas.width = 400;
 canvas.height = 600;
@@ -9,7 +15,7 @@ const jumpBtn =
 const restartBtn =
     document.getElementById("restartBtn");
 restartBtn.style.display = "none";
-    
+
 const bird = new Bird();
 
 let pipes = [];
@@ -28,6 +34,8 @@ jumpBtn.addEventListener(
 
         if (gameState === "PLAYING") {
             bird.jump();
+            jumpSound.currentTime = 0;
+            jumpSound.play();
         }
     }
 );
@@ -50,6 +58,8 @@ document.addEventListener("keydown", (e) => {
         e.code === "Space"
     ) {
         bird.jump();
+        jumpSound.currentTime = 0;
+        jumpSound.play();
     }
 
     if (
@@ -80,7 +90,8 @@ function gameOver() {
     if (gameState === "GAMEOVER") {
         return;
     }
-
+    hitSound.currentTime = 0;
+    hitSound.play();
     gameState = "GAMEOVER";
 
     restartBtn.style.display =
@@ -169,6 +180,13 @@ function update() {
 function draw() {
 
     ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+    ctx.drawImage(
+        background,
         0,
         0,
         canvas.width,
