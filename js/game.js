@@ -3,7 +3,13 @@ const ctx = canvas.getContext("2d");
 
 canvas.width = 400;
 canvas.height = 600;
+const jumpBtn =
+    document.getElementById("jumpBtn");
 
+const restartBtn =
+    document.getElementById("restartBtn");
+restartBtn.style.display = "none";
+    
 const bird = new Bird();
 
 let pipes = [];
@@ -15,6 +21,23 @@ let gameState = "PLAYING";
 
 let highScore =
     Number(localStorage.getItem("highScore")) || 0;
+
+jumpBtn.addEventListener(
+    "click",
+    () => {
+
+        if (gameState === "PLAYING") {
+            bird.jump();
+        }
+    }
+);
+
+restartBtn.addEventListener(
+    "click",
+    () => {
+        location.reload();
+    }
+);
 
 // =======================
 // Input
@@ -60,6 +83,9 @@ function gameOver() {
 
     gameState = "GAMEOVER";
 
+    restartBtn.style.display =
+        "block";
+
     if (score > highScore) {
 
         highScore = score;
@@ -70,7 +96,6 @@ function gameOver() {
         );
     }
 }
-
 // =======================
 // Collision
 // =======================

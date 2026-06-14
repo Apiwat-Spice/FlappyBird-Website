@@ -6,6 +6,43 @@ body{
     height:100vh;
 }
 
+#gameContainer{
+    position:relative;
+}
+
 canvas{
     border:1px solid black;
+}
+
+/* ปุ่มกระโดด */
+
+#jumpBtn{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:120px;
+    height:60px;
+
+    font-size:24px;
+}
+
+/* ปุ่ม Restart */
+
+#restartBtn{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%, -50%);
+
+    width:180px;
+    height:70px;
+
+    font-size:24px;
+
+    display:none;
 }
